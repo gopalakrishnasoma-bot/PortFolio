@@ -554,6 +554,91 @@
     line-height: 1.6;
   }
 
+  /* ─── CERTIFICATIONS ─── */
+  #certifications { background: var(--cream); }
+  #certifications .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .cert-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+    background: #fff;
+    padding: 2.5rem 2.5rem 2.5rem 3rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .cert-card.visible { opacity: 1; transform: translateY(0); }
+  .cert-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--gold) 100%);
+  }
+  .cert-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+  .cert-top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .cert-seal {
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--gold);
+  }
+  .cert-badge {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border: 1px solid var(--rule);
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .cert-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 0.4rem;
+  }
+  .cert-issuer {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .cert-desc {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+  .cert-link {
+    margin-top: auto;
+    align-self: flex-start;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--accent);
+    padding: 0.7rem 1.5rem;
+    border-radius: 2px;
+    transition: all 0.25s;
+  }
+  .cert-link:hover { background: var(--accent); color: #fff; }
+
   /* ─── AWARDS ─── */
   #awards { background: var(--ink); }
   #awards .section-kicker { color: var(--gold); }
@@ -709,6 +794,7 @@
     #skills .skills-grid { grid-template-columns: 1fr 1fr; }
     .works-grid { grid-template-columns: 1fr; }
     #education .edu-grid { grid-template-columns: 1fr; }
+    #certifications .cert-grid { grid-template-columns: 1fr; }
     .awards-grid { grid-template-columns: 1fr; }
     #contact { grid-template-columns: 1fr; }
     .contact-left, .contact-right { padding: 3rem 1.5rem; }
@@ -725,6 +811,7 @@
     <li><a href="#experience">Experience</a></li>
     <li><a href="#works">Work Samples</a></li>
     <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certifications</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="mailto:gopalakrishna.soma@gmail.com" class="nav-cta">Hire Me</a>
@@ -1058,6 +1145,28 @@
   </div>
 </section>
 
+<!-- ═══ CERTIFICATIONS ═══ -->
+<section id="certifications">
+  <div class="section-header">
+    <div class="section-kicker">Certifications</div>
+    <h2 class="section-title">Credentials &amp;<br><em>Continued Learning</em></h2>
+  </div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-top">
+        <div class="cert-seal">🎖</div>
+        <div class="cert-badge">Verified</div>
+      </div>
+      <div class="cert-title">Certificate of Prompt Engineering</div>
+      <div class="cert-issuer">AI &amp; Prompt Engineering</div>
+      <p class="cert-desc">
+        Formal recognition of applied skill in designing, structuring, and refining prompts for large language models — supporting the design of Claude-powered product features and contextual, AI-driven documentation experiences.
+      </p>
+      <a href="https://drive.google.com/file/d/1Zt_OnfUnHhgdNaQ-nt3pNYhwlW1qVAMl/view?usp=sharing" target="_blank" class="cert-link">View Certificate →</a>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ AWARDS ═══ -->
 <section id="awards">
   <div class="section-header">
@@ -1144,7 +1253,7 @@
     });
   }, { threshold: 0.08 });
 
-  document.querySelectorAll('.exp-item, .skill-cell, .work-card, .edu-card, .award-card').forEach((el, i) => {
+  document.querySelectorAll('.exp-item, .skill-cell, .work-card, .edu-card, .cert-card, .award-card').forEach((el, i) => {
     el.dataset.delay = (i % 3) * 100;
     observer.observe(el);
   });
